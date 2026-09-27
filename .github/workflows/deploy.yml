@@ -3,6 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ main ]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -12,9 +13,6 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./portfolio
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -26,9 +24,11 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+        working-directory: ./portfolio
 
       - name: Build
         run: npm run build
+        working-directory: ./portfolio
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
