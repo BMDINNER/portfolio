@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+@theme {
+  /* Dark theme colors */
+  --color-dark-grey: #1a1a1a;
+  --color-medium-grey: #2d2d2d;
+  --color-light-grey: #3d3d3d;
+  --color-text-grey: #b0b0b0;
+  --color-light-text: #d4d4d4;
+  --color-white: #ffffff;
+  
+  /* Dark fire orange colors - better synergy with dark gray */
+  --color-fire-orange: #d45300;
+  --color-fire-orange-light: #e05a00;
+  --color-fire-orange-dark: #b33a00;
+  --color-deep-red: #8b1a1a;
+  --color-dark-red: #6b1414;
+  --color-muted-red: #7a2e2e;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: var(--color-dark-grey);
+    color: var(--color-white);
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .section-heading {
+    @apply text-2xl font-bold text-light-text flex items-center mb-8;
+  }
+  
+  .section-heading::before {
+    content: '';
+    @apply w-8 h-px mr-4;
+    background-color: var(--color-fire-orange);
+  }
+  
+  .section-heading::after {
+    content: '';
+    @apply flex-1 h-px ml-4;
+    background-color: var(--color-medium-grey);
+  }
+
+  /* Orange button */
+  .btn-orange {
+    @apply relative overflow-hidden px-6 py-3 font-mono text-sm rounded transition-all duration-300;
+    background-color: var(--color-fire-orange);
+    color: white;
+    box-shadow: 0 4px 15px rgba(212, 83, 0, 0.3);
+  }
+
+  .btn-orange:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(212, 83, 0, 0.5);
+  }
+
+  .btn-orange:active {
+    transform: scale(0.95);
+  }
+
+  /* Orange glow effect */
+  .orange-glow {
+    position: relative;
+  }
+
+  .orange-glow::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background-color: var(--color-fire-orange);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    filter: blur(8px);
+  }
+
+  .orange-glow:hover::before {
+    opacity: 1;
+  }
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Utility classes for animations */
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.3s ease-out;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-dark-grey);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-light-grey);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-fire-orange);
+}
