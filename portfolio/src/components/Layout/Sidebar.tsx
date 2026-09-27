@@ -1,6 +1,7 @@
 import SocialLinks from '../Ui/SocialLinks';
 import { useLanguage } from '../../Context/LanguageContext';
 import LanguageToggle from '../Ui/LanguageToggle';
+import profileImage from '../../assets/profile.jpg';
 
 interface SidebarProps {
   activeSection: string;
@@ -25,7 +26,7 @@ const Sidebar = ({ activeSection }: SidebarProps) => {
           >
             <div className="w-full h-full rounded-full overflow-hidden bg-dark-grey">
               <img 
-                src="/berkedinner.github.io/profile.jpg" 
+                src={profileImage} 
                 alt="Profile" 
                 className="w-full h-full object-cover"
               />
