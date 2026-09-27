@@ -1,7 +1,7 @@
 import SocialLinks from '../Ui/SocialLinks';
 import { useLanguage } from '../../Context/LanguageContext';
 import LanguageToggle from '../Ui/LanguageToggle';
-
+//testing
 interface SidebarProps {
   activeSection: string;
 }
